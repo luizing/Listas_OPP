@@ -73,13 +73,12 @@ public class pais {
         return populacao/dimensao;
     }
 
-    // Printar fronteiras
-    public void printarFronteiras(){
-        for (int iterador = 0; iterador < fronteira.length ; iterador++){
-            System.out.println(fronteira[iterador]);
+    // Printar Fronteiras
+    public void printFronteiras(){
+        for (int pais = 0; pais < fronteira.length; pais++){
+            System.out.println(fronteira[pais]);
         }
     }
-
 
 }
 
