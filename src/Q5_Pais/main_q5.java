@@ -8,13 +8,13 @@ public class main_q5 {
         pais brasil = new pais("BRA", "brasil", 100);
     
         China.setPopulacao(83423);
- 
+
         System.out.printf("Densidade populacional da China: %f" ,China.densidadePopulacional());
         System.out.println("\nBrasil é igual a brasil? " + Brasil.isEqual(brasil));
     
         String[] fronteiras_ARG = {"Brasil","Chile"};
         Argentina.setFronteira(fronteiras_ARG);
-        Argentina.printarFronteiras();
-        
+        Argentina.printFronteiras();
+
     }
 }
