@@ -15,6 +15,7 @@ d) Um  método  inter,  que  retorne  um  novo  conjunto  de  acordo  com  a  se
 interseção  entre  conjuntos(um  novo  conjunto,  sem  elementos  repetidos,  com  os  elementos  que 
 estejam  nos  dois  conjuntos  originais  ,o  que  recebeu  a  mensagem  e  o  que  foi  passado  como 
 parâmetro); 
+
 e) Um  método  menos,  que  retorne  um  novo  conjunto  de  acordo  com  a  semântica  da  operação 
 subtração  entre  conjuntos  (um  novo  conjunto,  sem  elementos  repetidos,  com  os  elementos  do 
 conjunto que recebeu a mensagem, e que não existam no conjunto passado como parâmetro).
@@ -24,12 +25,12 @@ package Q7_Conjunto;
 
 public class Conjunto {
     // Atributos
-    String [] elementos;
+    String [] elementos = new String[0];    
 
     // Adicionar elemento
     public boolean adicionar(String novo){
         String [] novoArray = new String[elementos.length + 1]; // Cria novo array de tamanho +1
-        for (int index = 0; index < elementos.length; index++){ // Itera sob o antigo array e testa se o elemento a ser adicionado pertence a ele, caso pertenca, add ao novo array
+        for (int index = 0; index == elementos.length; index++){ // Itera sob o antigo array e testa se o elemento a ser adicionado pertence a ele, caso pertenca, add ao novo array
             if (elementos[index] == novo){
                 return false;
             }
@@ -82,7 +83,78 @@ public class Conjunto {
         uniao.elementos = arrayFinal;
 
         return uniao;
+        }
 
+        public Conjunto inter(Conjunto B){
+            // Cria uma nova array com o tamanho do menor dos conjuntos
+            int intersecTamanho;
+            if (this.elementos.length > B.elementos.length) {
+                intersecTamanho = B.elementos.length;
+            }
+            else{
+                intersecTamanho = this.elementos.length;
+            }
+            String[] intersecElementos = new String[intersecTamanho];
+        
+            // Comparar elementos de A e B e adicionar a intersecElementos aqueles que pertecem aos 2 conjuntos
+            int indexB = 0;
+            for (int index = 0; index < B.elementos.length; index++){ 
+                if (isPertencente(B.elementos[index])){ 
+                    intersecElementos[indexB] = B.elementos[index];
+                    indexB++;
+                }
+            }
+
+            // Para cortar os espaços vazios 
+            int indexC = 0;
+            while (intersecElementos[indexC] != null) {
+                indexC ++;
+            }
+            String[] arrayFinal = new String[indexC + 1]; 
+            for (int indexD = 0; indexD < arrayFinal.length; indexD++){
+                arrayFinal[indexD] = intersecElementos[indexD];
+            }
+
+            Conjunto intersec = new Conjunto();
+            intersec.elementos = arrayFinal;
+
+            return intersec;
+
+        }
+
+        public Conjunto menos(Conjunto B){
+            // Cria uma nova array
+            String[] menosElementos = new String[this.elementos.length];
+        
+            // Comparar elementos de A e B e adicionar a intersecElementos aqueles que pertecem a this e não a B
+            int indexB = 0;
+            for (int index = 0; index < this.elementos.length; index++){ 
+                if (!B.isPertencente(this.elementos[index])){ 
+                    menosElementos[indexB] = this.elementos[index];
+                    indexB++;
+                }
+            }
+
+            // Para cortar os espaços vazios 
+            int indexC = 0;
+            while (menosElementos[indexC] != null) {
+                indexC ++;
+            }
+            String[] arrayFinal = new String[indexC + 1]; 
+            for (int indexD = 0; indexD < arrayFinal.length; indexD++){
+                arrayFinal[indexD] = menosElementos[indexD];
+            }
+
+            Conjunto menos = new Conjunto();
+            menos.elementos = arrayFinal;
+
+            return menos;
+        }
+
+        // Mostrar elementos
+        public void printElementos(){
+            for (int i = 0; i < elementos.length; i++)
+            System.out.println(elementos[i]);
         }
 
     }
