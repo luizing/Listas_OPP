@@ -1,3 +1,5 @@
+package Q1_;
+
 public class GerenciadorDeImpostoDeRenda {
 
 

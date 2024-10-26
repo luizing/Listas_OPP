@@ -1,3 +1,5 @@
+package Q3_Banco;
+
 /*3) Com conceitos de Interface Nosso banco precisa tributar dinheiro de alguns bens que nossos 
 clientes possuem. Para isso, vamos criar um sistema para isso.  
 a) Crie uma interface Tributável que possui o método calculaTributos(), que retorna um double.  
