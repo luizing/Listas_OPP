@@ -1,4 +1,4 @@
-package Q8;
+package Q8_Matriz;
 
 import java.util.Scanner;
 
